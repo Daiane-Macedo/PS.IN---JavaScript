@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>formulário</title>
+        <style>
+            form{
+                text-align: center;
+            }
+            input{
+                margin-top: 20px;
+                border-radius: 2px;
+                margin-left: 5px;
+                margin-right: 5px;
+            } 
+        </style>
+    </head>
+    <body>
+
+       <form action="#">
+
+            E-mail: <input type="email" id="email">
+            <br> 
+            Senha: <input type="password" id="senha" name="senha" >
+            <br>
+            Confirme sua Senha: <input type="password" id="confirma_senha" name="confirma" >
+            <br>
+            Nome Completo:  <input type="text" id="nome" >
+            <br>
+            Sexo:<input type="radio" name="sexo" id="masc" value="masc"> Masculino 
+            <input type="radio" name="sexo" id="masc" value="fem"> Feminino
+            <br>
+            CPF: <input type="number" id="cpf">
+            <br>
+            Data de Nascimento: <input type="date" id="data_nasc">
+            <br>
+            Telefone:<input type="number" id="telefone">
+            <br>
+            CEP: <input type="number" id="cep">
+            <br>
+            Endereço:<input type="text" id="endereco">
+            <br>
+            Número: <input type="number" id="numero">
+            <br>
+            Bairro: <input type="text" id="bairro">
+            <br>
+            Cidade: <input type="text" id="cidade">
+            <br>
+            Estado: <input type="text" id="estado">
+            <br>    
+            <input type="submit" value="Enviar">
+
+       </form>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="jsform.js"></script>
+    </body>
+</html>
