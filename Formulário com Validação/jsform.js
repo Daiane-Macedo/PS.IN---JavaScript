@@ -3,18 +3,17 @@ $('#cep').blur(function() {
         url: "http://api.postmon.com.br/v1/cep/" + $(this).val(),
         method: "GET"
     });
-    requisicaoCep.done(function(dados){
-        console.log(dados);
-        $('#endereco').attr('disable','true').val(dados.endereco);
-        $('#bairro').val(dados.bairro);
-        $('#cidade').val(dados.cidade);
-        $('#estado').val(dados.estado);    
-    });
-    requisicaoCep.fail(function(erro){
-        console.log(erro.message);
-        alert("CEP não encontrado");
-    });
-});
+	requisicaoCep.done(function(dados){
+		console.log(dados);
+		$('#endereco').attr('disabled', 'true').val(dados.logradouro);
+		$('#bairro').attr('disabled', 'true').val(dados.bairro);
+		$('#cidade').attr('disabled', 'true').val(dados.cidade);
+		$('#estado').attr('disabled', 'true').val(dados.estado);
+	});
+	requisicaoCep.fail(function(dados){
+
+	})	
+})
 
 function Validacao() {
     
@@ -22,20 +21,22 @@ function Validacao() {
     var posArroba = email.indexOf("@");   //pega o índice do "@" dentro do e-mail
     var posPonto = email.lastIndexOf(".");    //pega o índice do "." dentro do e-mail
     var tamanho = email.length;           //pega o tamanho do endereço de e-mail digitado
-    
+        
+
      if(tamanho<6 || posArroba <1 || posPonto < posArroba+2 || posPonto+2>=tamanho){    /*  O menor tamanho é de 6 caracteres: x@y.zz, deve ter no mínimo 1 caracter antes do "@", 1 caracter depois do "@" e antes do ".", e 2 caracteres depois do "." antes do fim*/
-        alert("E-mail Inválido!");
+        alert("Insira um e-mail válido!");
      } 
         
     var nome = $('#nome').val();
-    var permitidos = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ'\-\ \s]+$/; //caracteres permitidos no campo nome
+    var permitidos = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/; //regex de caracteres permitidos no campo nome
+    
     if (nome[0]==" " || (!(nome.match (permitidos)))) {
         alert("Nome inválido!");
     }
 
     var senha = $('#senha').val();
-    if (senha[0] == " " || senha ==""){
-        alert("Insira uma senha!");
+    if (senha[0] == " " || senha.length < 4){
+        alert("Insira uma senha de no mínimo 4 dígitos!");
     } 
     
     var confirmacao = $('#confirma_senha').val();
@@ -44,26 +45,28 @@ function Validacao() {
     }
 
     var cpf = $('#cpf').val();
-    if (cpf.length != 11) {
-    	alert("CPF inválido");
+    var cpfval = true; // variável de validade de e-mail
+
+    if (cpf.length != 14) { 
+        cpfval = false; 
     }
-    var tudoIgual = true;
-        for (var i = 0; i < cpf.length - 1; i++) {
-            if (cpf[i] != cpf[i + 1]){
-                tudoIgual= false;
-            }
+    for (var i = 0; i < cpf.length - 1; i++) {  //Verificca se todos os dígitos do cpf são iguais
+        if (cpf[i] != cpf[i + 1]){
+            cpfval= false;
         }
-        if (tudoIgual){
-            alert("CPF inválido");
-        }
+    }
+    if (!(cpfval)){
+        alert("Insira um CPF inválido");
+    }
     
     var data = $('#data_nasc').val();
     if (data == "") {
     	alert("Insira uma data");
     }
     
-    var telefone = $('#telefone').val();
+    var telefone = $('#telefone').val();  //apenas aceita números de 10 dígitos (fixo) ou 11 (celular)
         if (telefone.length < 10 || telefone.length > 11){
             alert("Insira um telefone correto!");
     }
+    return false;    
 };

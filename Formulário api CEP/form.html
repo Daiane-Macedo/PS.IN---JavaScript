@@ -6,6 +6,7 @@
         <style>
             form{
                 text-align: center;
+                font-family:monospace;
             }
             input{
                 margin-top: 20px;
@@ -13,40 +14,44 @@
                 margin-left: 5px;
                 margin-right: 5px;
             } 
+            label.dados {
+                display: inline-block;
+                width: 90px;
+            }
         </style>
     </head>
     <body>
 
-       <form action="#">
-
-            E-mail: <input type="email" id="email">
+    <form name="form" action="#" onsubmit="return Validacao()" method="post">
+           
+            <label class=dados>E-mail:</label> <input type="email" id="email">
             <br> 
-            Senha: <input type="password" id="senha" name="senha" >
+            <label class=dados>Senha:</label> <input type="password" id="senha" name="senha" >
             <br>
-            Confirme sua Senha: <input type="password" id="confirma_senha" name="confirma" >
+            <label class=dados>Confirme sua Senha:</label> <input type="password" id="confirma_senha" name="confirma" >
             <br>
-            Nome Completo:  <input type="text" id="nome" >
+            <label class=dados>Nome Completo</label>  <input type="text" id="nome" >
             <br>
-            Sexo:<input type="radio" name="sexo" id="masc" value="masc"> Masculino 
+            <label class=dados>Sexo:</label>Sexo:<input type="radio" name="sexo" id="masc" value="masc"> Masculino 
             <input type="radio" name="sexo" id="masc" value="fem"> Feminino
             <br>
-            CPF: <input type="number" id="cpf">
+            <label class=dados>CPF:</label> <input type="number" id="cpf">
             <br>
-            Data de Nascimento: <input type="date" id="data_nasc">
+            <label class=dados>Data de Nascimento:</label><input type="date" id="data_nasc">
             <br>
-            Telefone:<input type="number" id="telefone">
+            <label class=dados>Telefone:</label><input type="number" id="telefone">
             <br>
-            CEP: <input type="number" id="cep">
+            <label class=dados>CEP:</label><input type="number" id="cep">
             <br>
-            Endereço:<input type="text" id="endereco">
+           <label class=dados>Endereço:</label><input type="text" id="endereco">
             <br>
-            Número: <input type="number" id="numero">
+            <label class=dados>Número:</label> <input type="number" id="numero">
             <br>
-            Bairro: <input type="text" id="bairro">
+            <label class=dados>Bairro:</label> <input type="text" id="bairro">
             <br>
-            Cidade: <input type="text" id="cidade">
+            <label class=dados>Cidade:</label> <input type="text" id="cidade">
             <br>
-            Estado: <input type="text" id="estado">
+            <label class=dados>Estado:</label><input type="text" id="estado">
             <br>    
             <input type="submit" value="Enviar">
 
